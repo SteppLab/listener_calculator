@@ -4,10 +4,10 @@
 
   // Map of file IDs based on method and listener type
   const fileIdMap = {
-    'orthographic_transcription_inexperienced': '109VWVNwVrd1jW5C8usGNytpTf_zlKbYj',
-    'orthographic_transcription_SLPs': '1uV0zSrhvJHrP0IPPOKPvxktP1BOhQRld',
-    'VAS_inexperienced': '1uDUNnsF8HaWZ1OHcfWDLtJAvfLsRwQhn',
-    'VAS_SLPs': '1RF38QhehcJOkFo83LCF1Sux2k6UP7zy8'
+     orthographic_transcription_inexperienced: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/orthographic_transcription_inexperienced.json',
+  orthographic_transcription_SLPs: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/orthographic_transcription_SLPs.json',
+  VAS_inexperienced: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/VAS_inexperienced.json',
+  VAS_SLPs: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/VAS_SLPs.json'
   };
 
   // Determine the file URL based on method and listener type
