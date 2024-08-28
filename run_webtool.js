@@ -1,13 +1,13 @@
 <script>
   // Base URL for the JSON files in Google Drive
-  const baseURL = 'https://drive.google.com/uc?export=download&id=';
+  const baseURL = 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/';
 
   // Map of file IDs based on method and listener type
   const fileIdMap = {
-     orthographic_transcription_inexperienced: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/orthographic_transcription_inexperienced.JSON?token=GHSAT0AAAAAACWW2LEV3EYXAKSK6O55YUQOZWPLOEA',
-  orthographic_transcription_SLPs: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/orthographic_transcription_SLPs.JSON?token=GHSAT0AAAAAACWW2LEVEJNEEY3ODUZRNNMCZWPLOIQ',
-  VAS_inexperienced: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/VAS_inexperienced.JSON?token=GHSAT0AAAAAACWW2LEVIZHORQNGUMH6WQLWZWPLOMQ',
-  VAS_SLPs: 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/VAS_SLPs.JSON?token=GHSAT0AAAAAACWW2LEVM6CMREMZH7DBASLKZWPLORQ'
+     orthographic_transcription_inexperienced: 'orthographic_transcription_inexperienced.JSON?token=GHSAT0AAAAAACWW2LEV3EYXAKSK6O55YUQOZWPLOEA',
+  orthographic_transcription_SLPs: 'orthographic_transcription_SLPs.JSON?token=GHSAT0AAAAAACWW2LEVEJNEEY3ODUZRNNMCZWPLOIQ',
+  VAS_inexperienced: 'VAS_inexperienced.JSON?token=GHSAT0AAAAAACWW2LEVIZHORQNGUMH6WQLWZWPLOMQ',
+  VAS_SLPs: 'VAS_SLPs.JSON?token=GHSAT0AAAAAACWW2LEVM6CMREMZH7DBASLKZWPLORQ'
   };
 
   // Determine the file URL based on method and listener type
