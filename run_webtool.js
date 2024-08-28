@@ -108,4 +108,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     updateAccuracyLabel();
   });
+
+console.log('JavaScript file loaded successfully.');
 </script>
