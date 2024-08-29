@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stepp Lab Intelligibility Assessment Tool</title>
+  <title>Stepp Lab Calculator for Intelligibility</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -128,12 +128,6 @@
       margin-bottom: 10px;
     }
 
-    .citation {
-      font-size: 12px;
-      color: #555;
-      margin-top: 20px;
-    }
-
     /* Responsive Styles */
     @media (max-width: 600px) {
       body {
@@ -144,7 +138,7 @@
         font-size: 1.2em; /* Smaller font size for smaller screens */
       }
 
-      .metadata, .citation {
+      .metadata {
         font-size: 10px;
       }
 
@@ -173,8 +167,12 @@
   </style>
 </head>
 <body>
-  <h1>Stepp Lab Intelligibility Assessment Tool</h1>
-
+  <h1>Listener/Sentence Calculator for Intelligibility</h1>
+  <div class="metadata">
+    <p>Last Updated: August 28, 2024</p>
+    <p>Version: 1.0</p>
+  </div>
+  
   <form id="criteriaForm">
     <div class="form-group">
       <label for="assessmentMethod">Assessment Method:</label>
@@ -208,14 +206,6 @@
     <table id="resultTable">
       <!-- Table content will be inserted here -->
     </table>
-  </div>
-
-  <div class="metadata">
-    <p>Last Updated: August 28, 2024 | Version: 1.0</p>
-  </div>
-
-  <div class="citation">
-    <p><b>Citation: </b> Dahl, K.L., Balz, M.A., Díaz Cádiz, M., & Stepp, C.E. (<i>In Press</i>). How to efficiently measure the intelligibility of people with Parkinson’s disease. <i>American Journal of Speech-Language Pathology</i>.</p>
   </div>
 
   <script>
