@@ -167,7 +167,7 @@
   </style>
 </head>
 <body>
-  <h1>Listener/Sentence Calculator for Intelligibility</h1>
+  <h1>Tool for Intelligibility Assessment</h1>
   <div class="metadata">
     <p>Last Updated: August 28, 2024</p>
     <p>Version: 1.0</p>
@@ -207,6 +207,15 @@
       <!-- Table content will be inserted here -->
     </table>
   </div>
+
+<div class="metadata">
+    <p>Last Updated: October 15, 2024 | Version: 1.1</p>
+  </div>
+
+  <div class="citation">
+    <p><b>Citation: </b> Dahl, K.L., Balz, M.A., Díaz Cádiz, M., & Stepp, C.E. (<i>In Press</i>). How to efficiently measure the intelligibility of people with Parkinson’s disease. <i>American Journal of Speech-Language Pathology</i>.</p>
+  </div>
+
 
   <script>
     const baseURL = 'https://raw.githubusercontent.com/SteppLab/listener_calculator/main/';
@@ -263,39 +272,40 @@
       for (const sentence of sentenceValues) {
         for (const listener of listenerValues) {
           const currentAccuracy = accuracyData[sentence]?.[listener];
-          if (currentAccuracy !== undefined) {
-            const accuracyDiff = Math.abs(currentAccuracy - accuracy);
-            results.push({ sentences: sentence, listeners: listener, accuracy: currentAccuracy, diff: accuracyDiff });
+          if (currentAccuracy !== undefined && currentAccuracy >= accuracy) {
+            results.push({ sentences: sentence, listeners: listener, accuracy: currentAccuracy });
           }
         }
       }
 
-      results.sort((a, b) => a.diff - b.diff || a.accuracy - b.accuracy);
-
-      displayResults(results.slice(0, 3));
+      if (results.length > 0) {
+        displayResults(results);
+      } else {
+        document.getElementById('resultTable').innerHTML = '<tr><td colspan="3">No matching results found.</td></tr>';
+      }
     }
 
     function displayResults(results) {
       const resultTitle = document.getElementById('resultTitle');
       const resultTable = document.getElementById('resultTable');
 
-      resultTitle.textContent = "Recommended # of Listeners and Sentences";
+      resultTitle.textContent = "Recommended # of Listeners and SIT Sentences";
       console.log(resultTable);
       if (results.length > 0) {
         resultTable.innerHTML = `
+        <tr>
+          <th onclick="sortTable(0)">SIT Sentences</th>
+          <th onclick="sortTable(1)">Listeners</th>
+          <th onclick="sortTable(2)">Accuracy</th>
+        </tr>
+        ${results.map(result => `
           <tr>
-            <th>Sentences</th>
-            <th>Listeners</th>
-            <th>Accuracy</th>
+            <td>${result.sentences}</td>
+            <td>${result.listeners}</td>
+            <td>${result.accuracy}%</td>
           </tr>
-          ${results.map(result => `
-            <tr>
-              <td>${result.sentences}</td>
-              <td>${result.listeners}</td>
-              <td>${result.accuracy}%</td>
-            </tr>
-          `).join('')}
-        `;
+        `).join('')}
+      `;
       } else {
         resultTable.innerHTML = '<tr><td colspan="3">No matching results found.</td></tr>';
       }
@@ -310,6 +320,41 @@
       const labelWidth = label.offsetWidth;
       const offset = (sliderWidth / 100) * value - (labelWidth / 2);
       label.style.left = `${offset}px`;
+    }
+
+    function sortTable(n) {
+      const table = document.getElementById("resultTable");
+      let switching = true, shouldSwitch, i, rows, x, y, dir = "asc", switchcount = 0;
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < rows.length - 1; i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          if (dir === "asc") {
+            if (n === 2 ? parseInt(x.innerHTML) > parseInt(y.innerHTML) : x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          } else if (dir === "desc") {
+            if (n === 2 ? parseInt(x.innerHTML) < parseInt(y.innerHTML) : x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchcount++;
+        } else {
+          if (switchcount === 0 && dir === "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
